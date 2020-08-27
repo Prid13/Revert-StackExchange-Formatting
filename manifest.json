@@ -1,0 +1,28 @@
+{
+  "name": "StackExchange - Old Line-Height",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "homepage_url": "http://stackoverflow.com",
+  "description": "Bring back the old line-height on StackExchange websites like StackOverflow.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "options_page": "src/options/index.html",
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "browser action demo",
+    "default_popup": "src/browser_action/browser_action.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.stackoverflow.com/*"
+      ],
+      "css": [
+        "src/inject/inject.css"
+      ]
+    }
+  ]
+}
