@@ -1,6 +1,6 @@
 var style = "";
 
-defaultValues = {
+var defaultValues = {
 	old_line_height: true,
 	custom_line_height: 1.3, // default value when custom is turned off
 	
@@ -28,10 +28,10 @@ chrome.storage.sync.get(defaultValues, function(savedValues){
 });
 
 function buildCSS(values){
-	line_height = values.custom ? values.custom_line_height : defaultValues.custom_line_height; // use default if custom disabled
+	var line_height = values.custom ? values.custom_line_height : defaultValues.custom_line_height; // use default if custom disabled
 	
 	// paragraphs
-	style  = ".s-prose { line-height: " + line_height + "!important; }";
+	style += ".s-prose { line-height: " + line_height + "!important; }";
 	
 	if(values.additional){
 		// code blocks

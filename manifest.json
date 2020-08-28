@@ -2,7 +2,7 @@
   "name": "Revert StackExchange Formatting",
   "version": "1.0.0",
   "manifest_version": 2,
-  "homepage_url": "https://github.com/Prid13/StackExchange-Old-Line-Height",
+  "homepage_url": "https://github.com/Prid13/Revert-StackExchange-Formatting",
   "description": "Brings back the old line height, colors, etc. on StackExchange websites like StackOverflow.",
   "icons": {
     "16": "icons/favicon-16x16.png",
@@ -21,7 +21,13 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.stackoverflow.com/*"
+        "*://*.stackoverflow.com/*",
+        "*://*.serverfault.com/*",
+        "*://*.superuser.com/*",
+        "*://*.stackexchange.com/*",
+        "*://*.askubuntu.com/*",
+        "*://*.stackapps.com/*",
+        "*://*.mathoverflow.net/*"
       ],
 	  "run_at": "document_start",
       "js": [
