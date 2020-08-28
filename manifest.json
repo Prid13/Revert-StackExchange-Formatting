@@ -1,27 +1,31 @@
 {
-  "name": "StackExchange - Old Line-Height",
+  "name": "Revert StackExchange Formatting",
   "version": "1.0.0",
   "manifest_version": 2,
-  "homepage_url": "http://stackoverflow.com",
-  "description": "Bring back the old line-height on StackExchange websites like StackOverflow.",
+  "homepage_url": "https://github.com/Prid13/StackExchange-Old-Line-Height",
+  "description": "Brings back the old line height, colors, etc. on StackExchange websites like StackOverflow.",
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "icons/favicon-16x16.png",
+    "32": "icons/favicon-32x32.png",
+    "48": "icons/favicon-48x48.png",
+    "128": "icons/favicon-128x128.png"
   },
-  "options_page": "src/options/index.html",
   "browser_action": {
-    "default_icon": "icons/icon19.png",
-    "default_title": "browser action demo",
+    "default_icon": "icons/favicon-19x19.png",
+    "default_title": "StackExchange - Custom Formatting",
     "default_popup": "src/browser_action/browser_action.html"
   },
+  "permissions": [
+    "storage"
+  ],
   "content_scripts": [
     {
       "matches": [
         "*://*.stackoverflow.com/*"
       ],
-      "css": [
-        "src/inject/inject.css"
+	  "run_at": "document_start",
+      "js": [
+        "src/inject/custom_css.js"
       ]
     }
   ]
