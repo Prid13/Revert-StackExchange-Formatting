@@ -15,6 +15,7 @@ Brings back the old `line-height`, colors, padding, borders, etc. of StackExchan
 - Only revert line-height
 - Choose custom line-height value
 - Enable additional reversions (background-colors, border-radius, padding, etc.)
+- Change blockquote styling (darker text, yellow background)
 - Disable extension with one click
 
 ### TO DO:
