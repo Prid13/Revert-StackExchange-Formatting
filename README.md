@@ -25,6 +25,7 @@ Brings back the old `line-height`, colors, padding, borders, etc. of StackExchan
 - [ ] Find and Revert more changes
 - [ ] Check if this works in Dark Mode
 - [ ] Add raw Custom CSS text option
+- [ ] Check if extension saving (sync) can fail if popup is closed too fast
 
 ### Resources:
 
