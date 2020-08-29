@@ -28,8 +28,9 @@
 			color: #777;
 			font-size: 0.9em;
 		}
-		#turn_off:checked + .gray {
-			color: black;
+		#turn_off_ext:checked + .gray {
+			color: #a01c1c;
+			font-weight: bold;
 		}
 		#refresh {
 			display: none;
@@ -58,6 +59,22 @@
 			<strong> Additional reversions</strong>
 			<em> (bg-colors, padding, border-radius, etc.)</em>
 		</label>
+	</p>
+	
+	<hr>
+	
+	<p class="indent">
+		<label for="additional">
+			 Blockquote styling:
+		</label>
+		<br>
+		<input type="radio" id="bq_off" name="blockquote" value="off" checked="checked">
+		<label for="bq_off" class="gray">Off </label>
+		<input type="radio" id="bq_dark-text" name="blockquote" value="dark">
+		<label for="bq_dark-text" class="gray">Dark text </label><br>
+		<input type="radio" id="bq_yellow-bg" name="blockquote" value="yellow">
+		<label for="bq_yellow-bg" class="gray">Yellow background </label>
+		</input>
 	</p>
 	
 	<hr>

@@ -15,6 +15,14 @@ var defaultValues = {
 	comment_code_bgcol: "#eff0f1",
 	comment_code_padding: "1px 5px",
 	
+	// blockquote styling
+	blockquote: "off",
+	
+	blockquote_dark_col: "#242729",
+	
+	blockquote_yellow_bgcol: "#fff8dc", // alts: #fbf2d4 (feb, 2020), #fdf7e3 (--yellow-050)
+	blockquote_yellow_linecol: "#ffeb8e",
+	
 	custom: false,
 	disabled: false,
 	additional: true
@@ -28,14 +36,18 @@ chrome.storage.sync.get(defaultValues, function(savedValues){
 });
 
 function buildCSS(values){
-	var line_height = values.custom ? values.custom_line_height : defaultValues.custom_line_height; // use default if custom disabled
+	// use default line-height if custom disabled
+	var line_height = values.custom ? values.custom_line_height : defaultValues.custom_line_height;
 	
-	// paragraphs
-	style += ".s-prose { line-height: " + line_height + "!important; }";
+	if(values.old_line_height || values.custom){
+		// paragraphs
+		style += ".s-prose { line-height: " + line_height + "!important; }";
+	}
 	
 	if(values.additional){
 		// code blocks
 		style += ".s-prose pre:not(.s-code-block) { ";
+		style += 	"line-height: " 		+ defaultValues.custom_line_height + "!important;";
 		style += 	"background-color: " 	+ values.code_block_bgcol + "!important;";
 		style += 	"padding: " 			+ values.code_block_padding + "!important;";
 		style += 	"border-radius: " 		+ values.code_block_radius + "!important;";
@@ -61,6 +73,27 @@ function buildCSS(values){
 		// fix padding for inline code if only old line-height is enabled
 		style += ".s-prose code:not(.s-code-block) {";
 		style += 	"padding: " 			+ values.inline_code_padding + "!important;";
+		style += "}";
+		
+	}
+	
+	// blockquote styling
+	if(values.blockquote == "dark"){
+		
+		style += ".s-prose blockquote {";
+		style += 	"color: " 				+ values.blockquote_dark_col + "!important;";
+		style += "}";
+		
+	} else if(values.blockquote == "yellow"){
+		
+		// don't apply to spoilers tags
+		style += ".s-prose blockquote:not(.spoiler) {";
+		style += 	"background-color: "	+ values.blockquote_yellow_bgcol + "!important;";
+		style += 	"color: " 				+ values.blockquote_dark_col + "!important;";
+		style += "}";
+		
+		style += ".s-prose blockquote:not(.spoiler):before {";
+		style += 	"background: "			+ values.blockquote_yellow_linecol + "!important;";
 		style += "}";
 		
 	}

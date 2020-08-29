@@ -1,17 +1,19 @@
 var line_height_checkbox = document.getElementById('old-line-height');
 var custom_checkbox = document.getElementById('custom-line-height');
 var additional_checkbox = document.getElementById('additional');
+var blockquote_radio = document.getElementsByName('blockquote');
 var disabled_checkbox = document.getElementById('turn_off_ext');
 var custom_input = document.getElementById('custom_input');
 var refresh_txt = document.getElementById('refresh');
 
-// sync variables
+// sync variables (default values listed)
 var vars = {
 	"old_line_height": true,
 	"custom": false,
 	"custom_line_height": 1.3,
-	"disabled": false,
-	"additional": true
+	"additional": true,
+	"blockquote": "off",
+	"disabled": false
 };
 
 var inited = false; // var to run doUpdate() differently first time
@@ -23,6 +25,7 @@ function init(){
 		vars['custom'] = data.custom;
 		vars['custom_line_height'] = data.custom_line_height;
 		vars['additional'] = data.additional;
+		vars['blockquote'] = data.blockquote;
 		vars['disabled'] = data.disabled;
 		
 		// init element states
@@ -32,6 +35,19 @@ function init(){
 		custom_input.value = vars['custom_line_height'];
 		additional_checkbox.checked = vars['additional'];
 		disabled_checkbox.checked = vars['disabled'];
+		
+		// loop radio buttons
+		for(var i = 0; i < blockquote_radio.length; i++){
+			var blockquote = blockquote_radio;
+			if(blockquote[i].value == vars['blockquote']){
+				blockquote[i].checked = true;
+			} else {
+				blockquote[i].checked = false;
+			}
+			
+			// radio button event listeners
+			blockquote[i].addEventListener('click', doUpdate);
+		}
 		
 		// init listeners
 		line_height_checkbox.addEventListener('change', doUpdate);
@@ -67,10 +83,19 @@ function doUpdate(){
 		vars['additional'] = false;
 	}
 	
+	// if Blockquote radio is changed
+	var blockquote = blockquote_radio;
+	for(var i = 0; i < blockquote.length; i++){
+		if(blockquote[i].checked){
+			vars['blockquote'] = blockquote[i].value;
+			break;
+		}
+	}
+	
 	// if extension is Disabled
 	vars['disabled'] = disabled_checkbox.checked;
 	if(vars['disabled']){
-		document.body.style.backgroundColor = "#ccc";
+		document.body.style.backgroundColor = "#d8a9a9";
 	} else {
 		document.body.style.backgroundColor = "white";
 	}
@@ -81,8 +106,9 @@ function doUpdate(){
 			"old_line_height": vars['old_line_height'],
 			"custom": vars['custom'],
 			"custom_line_height": custom_input.value,
-			"disabled": vars['disabled'],
-			"additional": vars['additional']
+			"additional": vars['additional'],
+			"blockquote": vars['blockquote'],
+			"disabled": vars['disabled']
 		});
 	}
 	
