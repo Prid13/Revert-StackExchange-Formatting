@@ -116,13 +116,13 @@ Usage:
 
 # Android
 
-- **[Kiwi Browser](play.google.com/store/apps/details?id=com.kiwibrowser.browser)** -- it's a Chromium-based browser for Android that lets you install and run almost any Chrome extension you can already find on desktop. 
+- **[Kiwi Browser](https://play.google.com/store/apps/details?id=com.kiwibrowser.browser)** -- it's a Chromium-based browser for Android that lets you install and run almost any Chrome extension you can already find on desktop. 
 Watch the [tutorial](https://www.youtube.com/watch?v=Dk1rlNR3QsM) on how to download extensions, and use my [extension](https://chrome.google.com/webstore/detail/revert-stackexchange-form/fliedkodjpgomjmjbkaehhlllnhmcjnh).
 
 - <s>**Firefox Browser for Android** offers addons.</s> Firefox on Android recently got [a major update](https://www.reddit.com/r/firefox/comments/ih9vmb/firefox_for_android_fenix_79_release_fennec_is/)
  that breaks most addons, which means Tampermonkey can't be used as of right now.
 Get the [older version](https://releases.mozilla.org/pub/mobile/releases/68.11.0/) or try another browser:
   
-- [Tampermonkey app](play.google.com/store/apps/details?id=net.biniok.tampermonkey) -- has anyone tested if this works? *(hasn't been updated since 2013)*
+- [Tampermonkey app](https://play.google.com/store/apps/details?id=net.biniok.tampermonkey) -- has anyone tested if this works? *(hasn't been updated since 2013)*
 
 - Bookmarklets -- follow the instructions under [iOS -> Bookmarklets](#bookmarklets) to create a bookmark that executes Javascript on click (steps may vary)
