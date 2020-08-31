@@ -7,7 +7,7 @@ Instructions on how to revert the recent StackExchange formattings (line height,
 - [iOS](#ios)
   * [Bookmarklets](#bookmarklets)
     + [Safari](#safari)
-    + [Chrome (iOS)](#chrome--ios-)
+    + [Chrome (iOS)](#chrome-ios)
   * [Shortcuts](#shortcuts)
 - [Android](#android)
 
