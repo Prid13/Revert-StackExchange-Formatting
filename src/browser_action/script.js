@@ -1,5 +1,6 @@
 var line_height_checkbox = document.getElementById('old-line-height');
 var custom_checkbox = document.getElementById('custom-line-height');
+var p_spacing_checkbox = document.getElementById('p_spacing');
 var additional_checkbox = document.getElementById('additional');
 var blockquote_radio = document.getElementsByName('blockquote');
 var disabled_checkbox = document.getElementById('turn_off_ext');
@@ -11,6 +12,7 @@ var vars = {
 	"old_line_height": true,
 	"custom": false,
 	"custom_line_height": 1.3,
+	"old_paragraph_spacing": true,
 	"additional": true,
 	"blockquote": "off",
 	"disabled": false
@@ -24,6 +26,7 @@ function init(){
 		vars['old_line_height'] = data.old_line_height;
 		vars['custom'] = data.custom;
 		vars['custom_line_height'] = data.custom_line_height;
+		vars['old_paragraph_spacing'] = data.old_paragraph_spacing;
 		vars['additional'] = data.additional;
 		vars['blockquote'] = data.blockquote;
 		vars['disabled'] = data.disabled;
@@ -33,6 +36,7 @@ function init(){
 		custom_checkbox.checked = vars['custom'];
 		custom_input.disabled = !vars['custom'];
 		custom_input.value = vars['custom_line_height'];
+		p_spacing_checkbox.checked = vars['old_paragraph_spacing'];
 		additional_checkbox.checked = vars['additional'];
 		disabled_checkbox.checked = vars['disabled'];
 		
@@ -53,6 +57,7 @@ function init(){
 		line_height_checkbox.addEventListener('change', doUpdate);
 		custom_checkbox.addEventListener('change', doUpdate);
 		custom_input.addEventListener('change', doUpdate);
+		p_spacing_checkbox.addEventListener('change', doUpdate);
 		additional_checkbox.addEventListener('change', doUpdate);
 		disabled_checkbox.addEventListener('change', doUpdate);
 		
@@ -75,6 +80,13 @@ function doUpdate(){
 		vars['custom'] = false;
 	}
 	custom_input.disabled = !vars['custom']; // disable when custom line-height is OFF
+	
+	// if Old Paragraph Spacing is checked
+	if(p_spacing_checkbox.checked){
+		vars['old_paragraph_spacing'] = true;
+	} else {
+		vars['old_paragraph_spacing'] = false;
+	}
 	
 	// if Additional Reversions is checked
 	if(additional_checkbox.checked){
@@ -106,6 +118,7 @@ function doUpdate(){
 			"old_line_height": vars['old_line_height'],
 			"custom": vars['custom'],
 			"custom_line_height": custom_input.value,
+			"old_paragraph_spacing": vars['old_paragraph_spacing'],
 			"additional": vars['additional'],
 			"blockquote": vars['blockquote'],
 			"disabled": vars['disabled']

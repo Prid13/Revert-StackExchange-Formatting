@@ -4,6 +4,9 @@ var defaultValues = {
 	old_line_height: true,
 	custom_line_height: 1.3, // default value when custom is turned off
 	
+	old_paragraph_spacing: true,
+	paragraph_spacing: "15px", // margin-bottom
+	
 	code_block_bgcol: "#eff0f1",
 	code_block_padding: "12px 8px",
 	code_block_radius: "3px",
@@ -40,32 +43,67 @@ function buildCSS(values){
 	var line_height = values.custom ? values.custom_line_height : defaultValues.custom_line_height;
 	
 	if(values.old_line_height || values.custom){
-		// paragraphs
+		// paragraphs' line height
 		style += ".s-prose { line-height: " + line_height + "!important; }";
+	}
+	
+	if(values.old_paragraph_spacing){
+		// paragraph spacing
+		style += ".s-prose p, .s-prose ol, .s-prose ul, .s-prose blockquote, .s-prose hr { ";
+		style += 	"margin-bottom: "		+ defaultValues.paragraph_spacing + "!important;"; // 15px
+		style += "}";
+		
+		// margin-bottom for <pre>
+		style += ".s-prose pre { ";
+		style += 	"margin-bottom: "		+ "13px!important;";
+		style += "}";
+		
+		// margin-bottom for ul li, ol li
+		style += ".s-prose ol li, .s-prose ul li { ";
+		style += 	"margin-bottom: "		+ "7.5px!important;";
+		style += "}";
+		// fix margin-bottom for last element in ol and ul
+		style += ".s-prose ol li:last-child, .s-prose ul li:last-child { ";
+		style += 	"margin-bottom: "		+ "0!important;";
+		style += "}";
+		
+		// heading margin-bottom
+		style += ".s-prose h1 { margin-bottom: 21px!important; }";
+		style += ".s-prose h2 { margin-bottom: 19px!important; }";
+		style += ".s-prose h3 { margin-bottom: 17px!important; }";
+		style += ".s-prose h4 { margin-bottom: 15px!important; }";
+		
+		// fix margin-bottom for last element in blockquote
+		style += ".s-prose blockquote *:last-child { ";
+		style += 	"margin-bottom: "		+ "0!important;"; // don't apply to blockquotes
+		style += "}";
 	}
 	
 	if(values.additional){
 		// code blocks
 		style += ".s-prose pre:not(.s-code-block) { ";
-		style += 	"line-height: " 		+ defaultValues.custom_line_height + "!important;";
-		style += 	"background-color: " 	+ values.code_block_bgcol + "!important;";
+		style += 	"line-height: "			+ defaultValues.custom_line_height + "!important;";
+		style += 	"background-color: "	+ values.code_block_bgcol + "!important;";
 		style += 	"padding: " 			+ values.code_block_padding + "!important;";
 		style += 	"border-radius: " 		+ values.code_block_radius + "!important;";
 		style += "}";
 		
-			// transparent bg on code lines within code blocks
-			style += ".s-prose pre:not(.s-code-block) code { background-color: transparent!important; }";
+			// fix inline code styling overriding code blocks (add transparent bg, remove padding)
+			style += ".s-prose pre:not(.s-code-block) code { ";
+			style += 	"background-color: transparent!important;";
+			style += 	"padding: 0!important;";
+			style += "}";
 		
 		// inline code
 		style += ".s-prose code:not(.s-code-block) {";
-		style += 	"background-color: " 	+ values.inline_code_bgcol + "!important;";
+		style += 	"background-color: "	+ values.inline_code_bgcol + "!important;";
 		style += 	"padding: " 			+ values.inline_code_padding + "!important;";
 		style += 	"border-radius: " 		+ values.inline_code_radius + "!important;";
 		style += "}";
 		
 		// comment inline code
 		style += ".comment-text code {";
-		style += 	"background-color: " 	+ values.comment_code_bgcol + "!important;";
+		style += 	"background-color: "	+ values.comment_code_bgcol + "!important;";
 		style += 	"padding: " 			+ values.comment_code_padding + "!important;"; // padding is same
 		style += "}";
 	} else {
@@ -81,7 +119,7 @@ function buildCSS(values){
 	if(values.blockquote == "dark"){
 		
 		style += ".s-prose blockquote {";
-		style += 	"color: " 				+ values.blockquote_dark_col + "!important;";
+		style += 	"color: "				+ values.blockquote_dark_col + "!important;";
 		style += "}";
 		
 	} else if(values.blockquote == "yellow"){
@@ -89,7 +127,7 @@ function buildCSS(values){
 		// don't apply to spoilers tags
 		style += ".s-prose blockquote:not(.spoiler) {";
 		style += 	"background-color: "	+ values.blockquote_yellow_bgcol + "!important;";
-		style += 	"color: " 				+ values.blockquote_dark_col + "!important;";
+		style += 	"color: "				+ values.blockquote_dark_col + "!important;";
 		style += "}";
 		
 		style += ".s-prose blockquote:not(.spoiler):before {";
