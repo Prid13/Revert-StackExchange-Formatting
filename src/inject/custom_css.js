@@ -81,7 +81,7 @@ function buildCSS(values){
 	
 	if(values.additional){
 		// code blocks
-		style += ".s-prose pre:not(.s-code-block) { ";
+		style += ".s-prose pre.s-code-block, .s-prose pre:not(.s-code-block) { ";
 		style += 	"line-height: "			+ defaultValues.custom_line_height + "!important;";
 		style += 	"background-color: "	+ values.code_block_bgcol + "!important;";
 		style += 	"padding: " 			+ values.code_block_padding + "!important;";
@@ -89,13 +89,13 @@ function buildCSS(values){
 		style += "}";
 		
 			// fix inline code styling overriding code blocks (add transparent bg, remove padding)
-			style += ".s-prose pre:not(.s-code-block) code { ";
+			style += ".s-prose pre.s-code-block code, .s-prose pre:not(.s-code-block) code { ";
 			style += 	"background-color: transparent!important;";
 			style += 	"padding: 0!important;";
 			style += "}";
 		
 		// inline code
-		style += ".s-prose code:not(.s-code-block) {";
+		style += ".s-prose *:not(.s-code-block) > code {";
 		style += 	"background-color: "	+ values.inline_code_bgcol + "!important;";
 		style += 	"padding: " 			+ values.inline_code_padding + "!important;";
 		style += 	"border-radius: " 		+ values.inline_code_radius + "!important;";
@@ -108,11 +108,14 @@ function buildCSS(values){
 		style += "}";
 	} else {
 		
-		// fix padding for inline code if only old line-height is enabled
-		style += ".s-prose code:not(.s-code-block) {";
-		style += 	"padding: " 			+ values.inline_code_padding + "!important;";
-		style += "}";
+		if(values.old_line_height || values.custom){
+			
+			// fix padding for inline code if only old line-height is enabled
+			style += ".s-prose *:not(.s-code-block):not(pre) > code {";
+			style += 	"padding: " 			+ values.inline_code_padding + "!important;";
+			style += "}";
 		
+		}
 	}
 	
 	// blockquote styling
