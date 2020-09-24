@@ -1,6 +1,6 @@
 {
   "name": "Revert StackExchange Formatting",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "manifest_version": 2,
   "homepage_url": "https://github.com/Prid13/Revert-StackExchange-Formatting",
   "description": "Brings back the old line height, colors, etc. on StackExchange websites like StackOverflow.",
