@@ -1,6 +1,6 @@
 ### Google Chrome Extension | GreaseMonkey Script | Stylish Theme
 # Revert StackExchange Formatting
-Brings back the old `line-height`, colors, padding, borders, etc. of StackExchange websites like StackOverflow, SuperUser, ServerFault, etc.
+Brings back the old `line-height`, fonts, colors, padding, borders, etc. of StackExchange websites like StackOverflow, SuperUser, ServerFault, etc.
 
 ### Downloads:
 
@@ -18,11 +18,13 @@ Mobile: [instructions](https://github.com/Prid13/Revert-StackExchange-Formatting
 - Choose custom line-height value
 - Revert to old paragraph spacing
 - Enable additional reversions (background-colors, border-radius, padding, etc.)
+- Revert to old Fonts (Arial, Consolas) *[only Chrome Extension!]*
 - Change blockquote styling (darker text, yellow background)
 - Disable extension with one click
 
 ### TO DO:
 
+- [x] Add option to revert fonts (as of May 10th)
 - [ ] Test on mobile devices
 - [ ] Add more customizable options (or keep it simple?)
 - [ ] Find and Revert more changes
