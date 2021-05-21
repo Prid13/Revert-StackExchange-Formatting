@@ -2,6 +2,9 @@ var line_height_checkbox = document.getElementById('old-line-height');
 var custom_checkbox = document.getElementById('custom-line-height');
 var p_spacing_checkbox = document.getElementById('p_spacing');
 var additional_checkbox = document.getElementById('additional');
+var old_font_checkbox = document.getElementById('old-font');
+var old_code_font_checkbox = document.getElementById('old-code-font');
+var custom_font_checkbox = document.getElementById('custom-font');
 var blockquote_radio = document.getElementsByName('blockquote');
 var disabled_checkbox = document.getElementById('turn_off_ext');
 var custom_input = document.getElementById('custom_input');
@@ -14,6 +17,9 @@ var vars = {
 	"custom_line_height": 1.3,
 	"old_paragraph_spacing": true,
 	"additional": true,
+	"old_font": true,
+	"old_code_font": true,
+	"custom_font": false,
 	"blockquote": "off",
 	"disabled": false
 };
@@ -28,6 +34,8 @@ function init(){
 		vars['custom_line_height'] = data.custom_line_height;
 		vars['old_paragraph_spacing'] = data.old_paragraph_spacing;
 		vars['additional'] = data.additional;
+		vars['old_font'] = data.old_font;
+		vars['old_code_font'] = data.old_code_font;
 		vars['blockquote'] = data.blockquote;
 		vars['disabled'] = data.disabled;
 		
@@ -38,6 +46,8 @@ function init(){
 		custom_input.value = vars['custom_line_height'];
 		p_spacing_checkbox.checked = vars['old_paragraph_spacing'];
 		additional_checkbox.checked = vars['additional'];
+		old_font_checkbox.checked = vars['old_font'];
+		old_code_font_checkbox.checked = vars['old_code_font'];
 		disabled_checkbox.checked = vars['disabled'];
 		
 		// loop radio buttons
@@ -59,6 +69,8 @@ function init(){
 		custom_input.addEventListener('change', doUpdate);
 		p_spacing_checkbox.addEventListener('change', doUpdate);
 		additional_checkbox.addEventListener('change', doUpdate);
+		old_font_checkbox.addEventListener('change', doUpdate);
+		old_code_font_checkbox.addEventListener('change', doUpdate);
 		disabled_checkbox.addEventListener('change', doUpdate);
 		
 		doUpdate();
@@ -95,6 +107,20 @@ function doUpdate(){
 		vars['additional'] = false;
 	}
 	
+	// if Revert Font is checked
+	if(old_font_checkbox.checked){
+		vars['old_font'] = true;
+	} else {
+		vars['old_font'] = false;
+	}
+	
+	// if Revert Code Font is checked
+	if(old_code_font_checkbox.checked){
+		vars['old_code_font'] = true;
+	} else {
+		vars['old_code_font'] = false;
+	}
+	
 	// if Blockquote radio is changed
 	var blockquote = blockquote_radio;
 	for(var i = 0; i < blockquote.length; i++){
@@ -120,6 +146,8 @@ function doUpdate(){
 			"custom_line_height": custom_input.value,
 			"old_paragraph_spacing": vars['old_paragraph_spacing'],
 			"additional": vars['additional'],
+			"old_font": vars['old_font'],
+			"old_code_font": vars['old_code_font'],
 			"blockquote": vars['blockquote'],
 			"disabled": vars['disabled']
 		});
@@ -134,7 +162,7 @@ function sync_vars(dict){
 	//	- set() call might fail if popup window closes prematurely?
 	chrome.storage.sync.set(dict, function(){
 
-		refresh_txt.style.display = "block";
+		refresh_txt.style.display = "block"; // make "REFRESH PAGE" label visible
 		
 	});
 }

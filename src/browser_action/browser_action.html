@@ -6,8 +6,8 @@
 	<style>
 		hr {
 			border: 0;
+			border-top: thin solid #ddd;
 			height: 1px;
-			background: #ddd;
 			margin-top: 20px;
 		}
 		h3 {
@@ -40,7 +40,29 @@
 			display: none;
 			color: #730000;
 			background-color: #ffecec;
-			padding: 3px;
+			font-size: 1.3em;
+			font-weight: bold;
+			padding: 5px;
+			margin-top: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
+			animation: splash 500ms normal forwards ease-in-out;
+		}
+		
+		/* credit: https://stackoverflow.com/questions/8482820/run-css3-animation-only-once-at-page-loading */
+		@keyframes splash {
+			from {
+				opacity: 0;
+				transform: scale(0, 0);
+			}
+			50% {
+				opacity: 1;
+				transform: scale(1.1, 1.1);
+			}
+			to {
+				transform: scale(1, 1);
+			}
 		}
 	</style>
 </head>
@@ -73,6 +95,26 @@
 	</p>
 	
 	<hr>
+	
+	<div class="indent">
+		<p style="margin-bottom: 5px;"><strong>Fonts:</strong></p>
+		
+		<p style="margin-top: 0; margin-bottom: 0;">
+			<input type="checkbox" id="old-font">
+			<label for="old-font">
+				Revert font
+			</label>
+		</p>
+
+		<p style="margin-top: 0; margin-bottom: 0;">
+			<input type="checkbox" id="old-code-font">
+			<label for="old-code-font">
+				Revert code font
+			</label>
+		</p>
+	</div>
+	
+	<hr style="margin-top: 15px;">
 	
 	<p class="indent">
 		<label for="additional">

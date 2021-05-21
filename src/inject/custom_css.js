@@ -18,6 +18,13 @@ var defaultValues = {
 	comment_code_bgcol: "#eff0f1",
 	comment_code_padding: "1px 5px",
 	
+	// fonts
+	old_font: true,
+	old_code_font: true,
+	
+	default_old_font: 'Arial,"Helvetica Neue",Helvetica,sans-serif',
+	codeblock_old_font: 'Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif',
+	
 	// blockquote styling
 	blockquote: "off",
 	
@@ -117,6 +124,19 @@ function buildCSS(values){
 		
 		}
 	}
+	
+	// fonts styling
+	style += "body {";
+	
+	if(values.old_font){
+		style += 	"--ff-sans: " + values.default_old_font + "!important;";
+		style += 	"--ff-serif: " + values.default_old_font + "!important;";
+	}
+	if(values.old_code_font){
+		style += 	"--ff-mono: " + values.codeblock_old_font + "!important;";
+	}
+	
+	style += "}";
 	
 	// blockquote styling
 	if(values.blockquote == "dark"){
