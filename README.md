@@ -40,4 +40,4 @@ Mobile: [instructions](https://github.com/Prid13/Revert-StackExchange-Formatting
 
 ### Donate:
 
-- [https://ko-fi.com/prid13](ko-fi.me/prid13)
+- [ko-fi.com/prid13](https://ko-fi.com/prid13)
