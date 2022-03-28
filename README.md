@@ -1,4 +1,4 @@
-### Google Chrome Extension | GreaseMonkey Script | Stylish Theme
+### [Google Chrome Extension](https://chrome.google.com/webstore/detail/revert-stackexchange-form/fliedkodjpgomjmjbkaehhlllnhmcjnh) | [GreaseMonkey Script](https://greasyfork.org/nb/scripts/410067-revert-stackexchange-formatting) | [Stylish Theme](https://userstyles.org/styles/188588/revert-stackexchange-formatting)
 # Revert StackExchange Formatting
 Brings back the old `line-height`, fonts, colors, padding, borders, etc. of StackExchange websites like StackOverflow, SuperUser, ServerFault, etc.
 
